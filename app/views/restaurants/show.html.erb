@@ -18,6 +18,20 @@
 <p>
   <%= link_to "Chef", chef_name_restaurant_path(@restaurant) %>
 </p>
+<br>
+<%= link_to "laisser un com", new_restaurant_review_path(@restaurant) %>
+<br>
+<h2>Vive les com</h2>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+  <li>
+    <%= review.content %>
+    <%= link_to "delete", review_path(review), method: :delete, data: { confirm: "are you sure?"} %>
+  </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+
+
