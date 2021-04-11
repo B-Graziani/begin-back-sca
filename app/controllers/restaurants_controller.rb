@@ -10,6 +10,13 @@ class RestaurantsController < ApplicationController
   def show
   end
 
+  def top
+    @restaurants = Restaurant.where(stars:5)
+  end
+  def chef_name
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   # GET /restaurants/new
   def new
     @restaurant = Restaurant.new
@@ -64,6 +71,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :stars)
+      params.require(:restaurant).permit(:name, :address, :stars, :chef_name)
     end
 end
