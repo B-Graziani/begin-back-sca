@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get :chef_name
     end
+    resources :reviews, only: [:new, :create]
 end
 
 
